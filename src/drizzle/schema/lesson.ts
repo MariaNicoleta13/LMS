@@ -6,7 +6,7 @@ import { UserLessonCompleteTable } from "./userLessonComplete";
 
 export const lessonStatuses = ["public", "private", "preview"] as const;
 export type LessonStatuses = (typeof lessonStatuses)[number];
-export const lessonSTatusEnum = pgEnum("lesson_status", lessonStatuses);
+export const lessonStatusEnum = pgEnum("lesson_status", lessonStatuses);
 
 export const LessonTable = pgTable("lessons", {
   id,
@@ -14,7 +14,7 @@ export const LessonTable = pgTable("lessons", {
   description: text(),
   youtubeVideoId: text().notNull(),
   order: integer().notNull(),
-  status: lessonSTatusEnum().notNull().default("private"),
+  status: lessonStatusEnum().notNull().default("private"),
   sectionId: uuid()
     .notNull()
     .references(() => CourseSectionTable.id, { onDelete: "cascade" }),

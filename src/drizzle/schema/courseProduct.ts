@@ -12,7 +12,7 @@ export const CourseProductTable = pgTable(
       .references(() => CourseTable.id, { onDelete: "restrict" }),
     productId: uuid()
       .notNull()
-      .references(() => ProductTable.id, { onDelete: "restrict" }),
+      .references(() => ProductTable.id, { onDelete: "cascade" }),
     createdAt,
     updatedAt,
   },
