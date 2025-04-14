@@ -1,5 +1,3 @@
-//joined table
-
 import { pgTable, uuid, primaryKey } from "drizzle-orm/pg-core";
 import { CourseTable } from "./course";
 import { ProductTable } from "./product";
