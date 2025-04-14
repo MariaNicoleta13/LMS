@@ -2,6 +2,7 @@ import { relations } from "drizzle-orm";
 import { pgTable, text } from "drizzle-orm/pg-core";
 import { id, createdAt, updatedAt } from "../schemaHelpers";
 import { CourseProductTable } from "./courseProduct";
+import { UserCourseAccessTable } from "./userCourseAccess";
 
 export const CourseTable = pgTable("courses", {
   id,
@@ -11,6 +12,7 @@ export const CourseTable = pgTable("courses", {
   updatedAt,
 });
 
-export const CourseRelathionships = relations(CourseTable, ({ one, many }) => ({
+export const CourseRelathionships = relations(CourseTable, ({ many }) => ({
   courseProducts: many(CourseProductTable),
+  userCourseAccesses: many(UserCourseAccessTable),
 }));
